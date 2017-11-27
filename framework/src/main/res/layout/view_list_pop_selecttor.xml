@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="false"
+    android:paddingLeft="20dp">
+
+
+    <!--头部-->
+    <RelativeLayout
+        android:id="@+id/crl_header"
+        android:layout_width="match_parent"
+        android:background="@drawable/pop_title_half_round"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/ctv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/comm_text_size_mid" />
+
+        <ImageButton
+            android:id="@+id/cib_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:paddingLeft="15dp"
+            android:src="@mipmap/pop_window_close" />
+    </RelativeLayout>
+
+    <!--搜索框-->
+    <LinearLayout
+        android:id="@+id/crl_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/crl_header"
+        android:background="#F4F8FB">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:fitsSystemWindows="false">
+
+            <framework.ui.widget.SearchView
+                android:id="@+id/sv_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hint="请输入关键字搜索" />
+
+            <EditText
+                android:id="@+id/cet_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:textColor="@color/color_55"
+                android:hint="请输入关键字搜索"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                android:textSize="@dimen/comm_txetsize_normal"
+                android:visibility="gone"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:layout_below="@+id/crl_search">
+
+        <LinearLayout
+            android:id="@+id/ll_tip_list"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null" />
+
+        <!--列表内容区域-->
+        <framework.ui.widget.listview.StickyListHeadersListView
+            android:id="@+id/cslhl_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@+id/ll_tip_list"
+            android:background="@color/white"
+            android:divider="@drawable/btn_style_gray_border_line"
+            android:scrollbars="none" />
+
+        <framework.ui.widget.SideBar
+            android:id="@+id/csb_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            app:customTextColor="#0066B3"
+            app:customTextSize="13dp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_no_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/crl_search"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/x100"
+        android:background="@color/white"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="@dimen/y350"
+            android:layout_height="@dimen/y530"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/y4"
+            android:src="@mipmap/search_cry"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="糟糕，没找到，一定是搜索的姿势不对"
+            android:textColor="#333333"
+            android:textSize="@dimen/y40"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/ctv_letter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="30dp" />
+</RelativeLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="custom_titleText" format="string"/>
+    <attr name="custom_titleTextColor" format="color"/>
+    <attr name="custom_titleTextSize" format="dimension"/>
+    
+    <declare-styleable name="CustomTitleView">
+        <attr name="custom_titleText"/>
+        <attr name="custom_titleTextColor"/>
+        <attr name="custom_titleTextSize"/>
+    </declare-styleable>
+    <declare-styleable name="ExpandTextView">
+        <attr name="textSize" format="dimension" />
+        <attr name="textColor" format="color"/>
+        <attr name="line" format="integer"/>
+        <attr name="pic_up" format="reference"/>
+        <attr name="pic_down" format="reference"/>
+        <attr name="text" format="string"/>
+        <attr name="duration" format="integer"/>
+    </declare-styleable>
+    <declare-styleable name="SearchView">
+        <attr name="hint" format="string"/>
+    </declare-styleable>
+    <declare-styleable name="SideBar">
+        <!--文字大小-->
+        <attr name="customTextSize" format="dimension"/>
+        <!--文字颜色-->
+        <attr name="customTextColor" format="color"/>
+        <!--选中文字颜色-->
+        <attr name="selectTextColor" format="color"/>
+        <!--选中背景颜色-->
+        <attr name="selectBackgroudColor" format="color"/>
+        <!--显示文字数据-->
+        <attr name="letter" format="reference"/>
+        <!--是否显示选中背景-->
+        <attr name="showSelectBackGroudColor" format="boolean"/>
+    </declare-styleable>
+</resources>

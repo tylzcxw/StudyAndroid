@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Button
+        android:id="@+id/btn_show_dialog"
+        android:layout_width="match_parent"
+        android:text="弹出弹窗"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_show_loadingdialog"
+        android:layout_width="match_parent"
+        android:text="显示进度弹窗"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_vertical_viewpager"
+        android:layout_width="match_parent"
+        android:text="可垂直轮播的viewpager"
+        android:layout_height="wrap_content" />
+    <Button
+            android:id="@+id/btn_expand_tv"
+            style="@style/Comm_Btn_Base_Style1"
+            android:text="可扩展的文本控件(有缺陷)"/>
+</LinearLayout>

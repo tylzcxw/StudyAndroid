@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ormlite_data">
+        <item>添加数据</item>
+        <item>删除数据</item>
+        <item>修改数据</item>
+        <item>查找数据</item>
+        <item>按id=10查找数据</item>
+        <item>按person_name=name10查找数据></item>
+        <item>按id小于10查找数据</item>
+        <item>现有数据数量</item>
+    </string-array>
+    <string-array name="example_data">
+        <item>TextView可展开内容</item>
+        <item>mvp学习</item>
+        <item>暂定</item>
+        <item>测试</item>
+        <item>相机相关</item>
+        <item>权限判断</item>
+        <item>二维码扫描</item>
+        <item>Html5</item>
+        <item>Html5 back</item>
+        <item>Html5 back</item>
+    </string-array>
+    <string-array name="android_data">
+        <item>fragment生命周期</item>
+        <item>正则学习1</item>
+        <item>父类子类复写方法执行顺序</item>
+        <item>打勾显示输入的密码</item>
+        <item>具自动提示功能的菜单</item>
+        <item>数字及模拟小时钟设计</item>
+        <item>动态放大缩小ImageView里的图片</item>
+        <item>手机震动</item>
+        <item>EXIF照片信息编辑及读取</item>
+        <item>Material Design系列</item>
+
+    </string-array>
+    <string-array name="index_data">
+        <item>例子</item>
+        <item>android知识</item>
+        <item>自定义控件</item>
+        <item>第三方运用</item>
+
+    </string-array>
+    <string-array name="custom_widget_data">
+        <item>CustomDialog-自定义弹框</item>
+        <item>VerticalViewPager-垂直轮播ViewPager</item>
+        <item>ExpandTextView-视图加载处理</item>
+        <item>SearchView-搜索框</item>
+        <item>ListPopSelecttor-搜索</item>
+
+    </string-array>
+    <string-array name="three_study_data">
+        <item>BaiduMap-1-学习</item>
+        <item>BaiduMap-2-学习</item>
+        <item>OkHttp-1-学习</item>
+        <item>LoadSir-视图加载处理</item>
+        <item>OrmLite-1-数据库使用</item>
+        <item>OrmLite-2-数据库升级</item>
+        <item>Retrofit2-RxJava-OkHttp</item>
+        <item>TakePhoto-拍照截图压缩等</item>
+
+    </string-array>
+</resources>

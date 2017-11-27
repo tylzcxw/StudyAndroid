@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:weightSum="5">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3">
+
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/baidumap"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <ImageView
+            android:id="@+id/iv_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/ic_action_location"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_location"
+                style="@style/Comm_Btn_Base_Style1"
+                android:text="我的位置"/>
+
+            <Button
+                android:id="@+id/btn_marker_add"
+                style="@style/Comm_Btn_Base_Style1"
+                android:text="marker_add1"/>
+
+            <Button
+                android:id="@+id/btn_marker_ad2"
+                style="@style/Comm_Btn_Base_Style1"
+                android:text="marker_add2"/>
+
+            <Button
+                android:id="@+id/btn_marker_add3"
+                style="@style/Comm_Btn_Base_Style1"
+                android:text="marker_add3"/>
+
+            <Button
+                android:id="@+id/btn_marker_remove"
+                style="@style/Comm_Btn_Base_Style1"
+                android:text="marker_remove"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

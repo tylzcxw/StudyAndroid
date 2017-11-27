@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="comm_txetsize_normal">14dp</dimen>
+    <dimen name="comm_textsize_small_14">14dp</dimen>
+    <dimen name="comm_txt_size_index_m">12.5dp</dimen>
+    <!-- 字体大小预设值 -->
+    <dimen name="comm_sms_text_size_index">11dp</dimen>
+    <dimen name="comm_text_size_index">13dp</dimen>
+    <dimen name="comm_text_size_small">15dp</dimen>
+    <dimen name="comm_text_size_mid">17dp</dimen>
+    <dimen name="comm_text_size_large">19dp</dimen>
+    <dimen name="comm_text_size_xlarge">21dp</dimen>
+
+    <dimen name="comm_text_size_title">19dp</dimen>
+</resources>

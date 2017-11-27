@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 浅色背景、主要按钮start -->
+    <!-- 正常描边颜色 -->
+    <color name="spec_button_major_tint_style_enabled">#09b6f2</color>
+    <!-- 正常字体颜色 -->
+    <color name="spec_button_major_tint_font_enabled">#09b6f2</color>
+    <!-- 按下描边颜色 -->
+    <color name="spec_button_major_tint_style_pressed">#164a99</color>
+    <!-- 按下字体颜色 -->
+    <color name="spec_button_major_tint_font_pressed">#164a99</color>
+    <!-- 停用描边颜色 -->
+    <color name="spec_button_major_tint_style_disabled">#c8eeff</color>
+    <!-- 停用字体颜色 -->
+    <color name="spec_button_major_tint_font_disabled">#c8eeff</color>
+    <!-- 浅色背景、主要按钮end -->
+
+    <!-- 深色背景、主要按钮start -->
+    <!-- 正常填充颜色 -->
+    <color name="spec_button_major_dark_style_enabled">#ffffff</color>
+    <!-- 正常字体颜色 -->
+    <color name="spec_button_major_dark_font_enabled">#666666</color>
+    <!-- 按下填充颜色 -->
+    <color name="spec_button_major_dark_style_pressed">#ffffff</color>
+    <!-- 按下字体颜色 -->
+    <color name="spec_button_major_dark_font_pressed">#333333</color>
+    <!-- 停用填充颜色 -->
+    <color name="spec_button_major_dark_style_disabled">#ffffff</color>
+    <!-- 停用字体颜色 -->
+    <color name="spec_button_major_dark_font_disabled">#cccccc</color>
+    <!-- 深色背景、主要按钮end -->
+
+    <!-- 浅色背景、次要按钮start -->
+    <!-- 正常描边颜色 -->
+    <color name="spec_button_minor_tint_style_enabled">#999999</color>
+    <!-- 正常字体颜色 -->
+    <color name="spec_button_minor_tint_font_enabled">#666666</color>
+    <!-- 按下描边颜色 -->
+    <color name="spec_button_minor_tint_style_pressed">#191919</color>
+    <!-- 按下字体颜色 -->
+    <color name="spec_button_minor_tint_font_pressed">#333333</color>
+    <!-- 停用描边颜色 -->
+    <color name="spec_button_minor_tint_style_disabled">#e5e5e5</color>
+    <!-- 停用字体颜色 -->
+    <color name="spec_button_minor_tint_font_disabled">#cccccc</color>
+    <!-- 浅色背景、次要按钮end -->
+
+    <!-- 深色背景、次要按钮start -->
+    <!-- 正常描边颜色 -->
+    <color name="spec_button_minor_dark_style_enabled">#ffffff</color>
+    <!-- 正常字体颜色 -->
+    <color name="spec_button_minor_dark_font_enabled">#ffffff</color>
+    <!-- 按下填充颜色 -->
+    <color name="spec_button_minor_dark_style_pressed">#ffffff</color>
+    <!-- 按下字体颜色 -->
+    <color name="spec_button_minor_dark_font_pressed">#333333</color>
+    <!-- 停用填充颜色 -->
+    <color name="spec_button_minor_dark_style_disabled">#eeeeee</color>
+    <!-- 停用字体颜色 -->
+    <color name="spec_button_minor_dark_font_disabled">#cccccc</color>
+    <!-- 深色背景、次要按钮end -->
+
+    <!-- 玫红色 -->
+    <color name="spec_rose_bengal">#db3764</color>
+
+    <!-- 深绿色 -->
+    <color name="spec_dark_green">#429d4b</color>
+
+    <!-- 常用链接文字蓝色 -->
+    <color name="spec_font_link">#09b6f2</color>
+
+    <color name="spec_font_number_up">#db3762</color>
+
+    <color name="spec_font_number_down">#429d4b</color>
+
+    <color name="spec_font_1">#333333</color>
+
+    <color name="spec_font_2">#09b6f2</color>
+
+    <color name="spec_font_3">#666666</color>
+
+    <color name="spec_font_4">#999999</color>
+
+    <color name="spec_font_5">#ffffff</color>
+
+    <color name="spec_window_bg">#ffffff</color>
+
+    <!-- 不可点击title颜色 -->
+    <color name="spec_enable_title">#164a99</color>
+
+
+    <!-- 以上为手机银行4.0的颜色标准，定义必须以spec_开始 -->
+</resources>

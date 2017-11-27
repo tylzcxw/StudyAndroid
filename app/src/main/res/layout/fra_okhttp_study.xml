@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/btn_get_okhttp"
+            style="@style/Comm_Btn_Base_Style1"
+            android:text="简单get异步请求使用"/>
+        <Button
+            android:id="@+id/btn_get_sync_okhttp"
+            style="@style/Comm_Btn_Base_Style1"
+            android:text="简单get同步请求使用"/>
+        <Button
+            android:id="@+id/btn_post_okhttp"
+            style="@style/Comm_Btn_Base_Style1"
+            android:text="简单post异步请求使用"/>
+        <Button
+            android:id="@+id/btn_post_sync_okhttp"
+            style="@style/Comm_Btn_Base_Style1"
+            android:text="简单post同步请求使用"/>
+        <Button
+            android:id="@+id/btn_login"
+            style="@style/Comm_Btn_Base_Style1"
+            android:text="登录乐聚机器人"/>
+        <Button
+            android:id="@+id/btn_login1"
+            style="@style/Comm_Btn_Base_Style1"
+            android:text="封装登录乐聚机器人"/>
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <framework.ui.widget.ExpandTextView
+        android:id="@+id/view_etv"
+        app:line="2"
+        app:textSize="20px"
+        app:text="@string/app_des"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></framework.ui.widget.ExpandTextView>
+    <framework.ui.widget.ExpandTextView
+        android:id="@+id/view_etv2"
+        app:line="2"
+        app:textSize="20px"
+        app:text="111"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></framework.ui.widget.ExpandTextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:text="@string/app_des"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

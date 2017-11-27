@@ -1,0 +1,6 @@
+include ':app', ':mypic'
+include ':protocol'
+include ':commblib'
+include ':framework'
+include ':myutils'
+include ':utilcode'

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_create"
+        style="@style/Comm_Btn_Base_Style1"
+        android:text="创建数据库版本1"/>
+
+    <Button
+        android:id="@+id/btn_create2"
+        style="@style/Comm_Btn_Base_Style1"
+        android:text="创建数据库版本2"/>
+    <Button
+        android:id="@+id/btn_create3"
+        style="@style/Comm_Btn_Base_Style1"
+        android:text="创建数据库版本3"/>
+    <Button
+        android:id="@+id/btn_create4"
+        style="@style/Comm_Btn_Base_Style1"
+        android:text="创建数据库版本4"/>
+    <Button
+        android:id="@+id/btn_create5"
+        style="@style/Comm_Btn_Base_Style1"
+        android:text="创建数据库版本5"/>
+</LinearLayout>
