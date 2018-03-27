@@ -4,9 +4,10 @@ import android.app.Activity;
 import android.os.Looper;
 import android.text.TextUtils;
 
-import com.example.commblib.config.C;
-import com.example.commblib.net.httpconnection.MbsResult;
-import com.example.commblib.utils.NetUtils;
+import com.tylz.common.config.C;
+import com.tylz.common.httpconnection.MbsResult;
+import com.tylz.common.utils.LogManager;
+import com.tylz.common.utils.NetUtils;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -29,7 +30,6 @@ import framework.exception.SecurityException;
 import framework.exception.TransactionException;
 import framework.exception.TransactionParamsCheckException;
 import framework.ui.LoadingDialog;
-import framework.utils.LogManager;
 import framework.utils.LogUtils;
 
 import static framework.transaction.TransactionRequest.ParameterType.NULL;

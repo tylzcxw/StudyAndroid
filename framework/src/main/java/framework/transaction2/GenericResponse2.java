@@ -2,9 +2,9 @@ package framework.transaction2;
 
 import com.blankj.utilcode.util.EmptyUtils;
 import com.blankj.utilcode.util.NetworkUtils;
-import com.example.commblib.config.C;
-import com.example.commblib.okhttpconnection.MbsResult2;
-import com.example.commblib.utils.LogManager;
+import com.tylz.common.config.C;
+import com.tylz.common.okhttpconnection.MbsResult2;
+import com.tylz.common.utils.LogManager;
 
 import framework.async2.ResultListener2;
 import framework.exception.TransactionException;
@@ -17,7 +17,7 @@ import framework.exception.TransactionException;
 public class GenericResponse2 extends TransactionResponse2 {
     public  ResultListener2     mResultListener2;
     public  TransactionRequest2 mRequest2;
-    private MbsResult2          mResult2;
+    private MbsResult2 mResult2;
 
     @Override
     public <T> T parseResult(MbsResult2 mbsResult,

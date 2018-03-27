@@ -7,7 +7,7 @@ import android.graphics.Point;
 import android.os.Build;
 import android.view.Display;
 
-import com.example.commblib.config.C;
+import com.tylz.common.config.C;
 
 import framework.app.BaseContext;
 

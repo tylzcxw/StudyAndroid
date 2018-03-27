@@ -9,7 +9,6 @@ import com.blankj.utilcode.util.CrashUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.Utils;
 import com.facebook.stetho.Stetho;
-import com.tylz.myutils.MyUtils;
 
 import framework.loadsir.callback.EmptyCallback;
 import framework.loadsir.callback.ErrorCallback;
@@ -36,7 +35,6 @@ public class BaseApplication extends MultiDexApplication {
         CrashHandler.getInstance().initCrashHandler(getApplicationContext());
         ContextUtils.initialize(BaseApplication.getInstance());
         Utils.init(this);
-        MyUtils.init(this);
         initLog();
         initCrash();
         initAssets();

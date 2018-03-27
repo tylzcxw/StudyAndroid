@@ -12,7 +12,7 @@ import android.provider.Settings;
 import framework.app.ActivityManager;
 import framework.app.BaseApplication;
 import framework.ui.CcbDialog;
-import framework.utils.LogManager;
+import com.tylz.common.utils.LogManager;
 
 /**
  * Created by cxw on 2017/5/5.

@@ -1,5 +1,11 @@
 apply plugin: 'com.android.application'
+/**采用解析Properties文件获取签名信息的方式，*/
+Properties props = new Properties();
+props.load(new FileInputStream(file("signing.properties")))
 
+def releaseTime() {
+    return new Date().format('yyyyMMddHHmm')
+}
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -15,23 +21,49 @@ android {
         versionName rootProject.ext.versionName
         multiDexEnabled true
     }
-    buildTypes {
+    signingConfigs { //签名文件配置
+        debug {
+            keyAlias props['KEY_ALIAS']
+            keyPassword props['KEY_PASSWORD']
+            storeFile file(props['STORE_FILE'])
+            storePassword props['STORE_PASSWORD']
+        }
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            keyAlias props['KEY_ALIAS']
+            keyPassword props['KEY_PASSWORD']
+            storeFile file(props['STORE_FILE'])
+            storePassword props['STORE_PASSWORD']
         }
     }
+    buildTypes {
+        release {
+            minifyEnabled false//是否开启混淆
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                outputFileName = "${defaultConfig.applicationId}_" + buildType.name + "_v${defaultConfig.versionName}_${releaseTime()}.apk";
+            }
+    }
+
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:multidex:1.0.2'
-    api 'com.jakewharton:butterknife:8.5.1'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:multidex:1.0.2'
+    compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
-    implementation project(':commblib')
-    implementation project(':framework')
-    implementation project(':protocol')
-    implementation project(':myutils')
-    implementation project(':utilcode')
+    compile project(':framework')
+    compile project(':protocol')
+    compile project(':common')
 
 }

@@ -1,7 +1,7 @@
 package framework.transaction2;
 
-import com.example.commblib.okhttpconnection.MbsResult2;
 import com.google.gson.Gson;
+import com.tylz.common.okhttpconnection.MbsResult2;
 
 import framework.async2.ResultListener2;
 import framework.exception.TransactionException;

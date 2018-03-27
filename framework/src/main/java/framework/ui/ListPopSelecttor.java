@@ -39,7 +39,7 @@ import framework.ui.widget.SearchView;
 import framework.ui.widget.SideBar;
 import framework.ui.widget.listview.StickyListHeadersAdapter;
 import framework.ui.widget.listview.StickyListHeadersListView;
-import framework.utils.LogManager;
+import com.tylz.common.utils.LogManager;
 import framework.utils.UIUtils;
 
 /*

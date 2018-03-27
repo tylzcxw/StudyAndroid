@@ -1,5 +1,6 @@
 package framework.utils;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -16,12 +17,16 @@ import android.text.TextUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import com.tylz.common.utils.LogManager;
+
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 
 import framework.app.BaseApplication;
 import framework.ui.widget.SearchView;
+
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 /*
  *  @创建者:   xuanwen
@@ -105,21 +110,34 @@ public class UIUtils {
      * @param permission 权限名称 例如 {@link android.Manifest.permission#CALL_PHONE}
      * @return 如果权限开启返回true 如果没有返回false
      */
-    public static boolean hasAppPermission(String permission) {
+    public static boolean hasAppPermission1(String permission) {
         if (TextUtils.isEmpty(permission)) {
             return true;
         }
         if (getTargetSdkVersion() < Build.VERSION_CODES.M) {
-            return PackageManager.PERMISSION_GRANTED == PermissionChecker.checkSelfPermission(
-                    BaseApplication.getInstance(),
-                    permission);
+            return PackageManager.PERMISSION_GRANTED == PermissionChecker.checkSelfPermission(BaseApplication.getInstance(), permission);
         } else {
-            return PackageManager.PERMISSION_GRANTED == ContextCompat.checkSelfPermission(
-                    BaseApplication.getInstance(),
-                    permission);
+            return PackageManager.PERMISSION_GRANTED == ContextCompat.checkSelfPermission(BaseApplication.getInstance(), permission);
         }
     }
-
+    /**
+     * 检查是否有权限
+     * @param permission 权限名称 例如 {@link android.Manifest.permission#CALL_PHONE}
+     * @return 如果权限开启返回true 如果没有返回false
+     */
+    public static boolean hasAppPermission(String permission) {
+        if (TextUtils.isEmpty(permission))
+            return true;
+        if(Manifest.permission.REQUEST_INSTALL_PACKAGES.equals(permission)){
+            return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+                    ? BaseApplication.getInstance().getPackageManager().canRequestPackageInstalls() : true;
+        }
+        if (getTargetSdkVersion() < Build.VERSION_CODES.M) {
+            return PERMISSION_GRANTED == PermissionChecker.checkSelfPermission(BaseApplication.getInstance(), permission);
+        } else {
+            return PERMISSION_GRANTED == ContextCompat.checkSelfPermission(BaseApplication.getInstance(), permission);
+        }
+    }
     /**
      * 从context中获取Activity
      * @param context

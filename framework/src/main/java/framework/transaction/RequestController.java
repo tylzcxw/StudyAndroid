@@ -1,14 +1,12 @@
 package framework.transaction;
 
-import android.text.TextUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import framework.app.ActivityManager;
 import framework.app.BaseActivity;
 import framework.async.AsyncTask;
-import framework.utils.LogManager;
+import com.tylz.common.utils.LogManager;
 
 /**
  * Created by cxw on 2017/7/20.

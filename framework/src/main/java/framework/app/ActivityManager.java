@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.tylz.common.utils.LogManager;
+
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
@@ -118,7 +120,7 @@ public class ActivityManager {
             } else {
                 jumpMsg.append("当前类未继承BaseFragment或BaseActivity");
             }
-            com.example.commblib.utils.LogManager.logD(jumpMsg.toString());
+            LogManager.logD(jumpMsg.toString());
         } catch (Exception e) {
             LogUtils.error("startActivity:" + e.toString());
         }

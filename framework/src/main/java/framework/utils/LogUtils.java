@@ -4,6 +4,8 @@ package framework.utils;
 import android.os.Environment;
 import android.util.Log;
 
+import com.tylz.common.utils.LogManager;
+
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;

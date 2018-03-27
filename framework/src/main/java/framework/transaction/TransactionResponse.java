@@ -1,13 +1,13 @@
 package framework.transaction;
 
-import com.example.commblib.net.httpconnection.MbsResult;
 import com.google.gson.Gson;
+import com.tylz.common.httpconnection.MbsResult;
+import com.tylz.common.utils.LogManager;
 
 import java.io.InputStream;
 
 import framework.async.ResultListener;
 import framework.exception.TransactionException;
-import framework.utils.LogManager;
 
 /**
  * Created by cxw on 2017/7/18.

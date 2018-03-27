@@ -1,7 +1,8 @@
 package framework.transaction2;
 
-import com.example.commblib.okhttpconnection.MbsRequest2;
-import com.example.commblib.okhttpconnection.MbsResult2;
+
+import com.tylz.common.okhttpconnection.MbsRequest2;
+import com.tylz.common.okhttpconnection.MbsResult2;
 
 import framework.app.ActivityManager;
 import framework.app.BaseActivity;
@@ -29,7 +30,7 @@ public class GenericRequest2<T extends TransactionResponse2> extends Transaction
     protected T send() throws TransactionException {
         resetValue();
         BaseActivity topActivity = ActivityManager.getInstance().getTopActivity();
-        MbsRequest2  mbsRequest2 = new MbsRequest2(getProtocolUrl(), getMethod(), topActivity, getParams(), getHeadParams());
+        MbsRequest2 mbsRequest2 = new MbsRequest2(getProtocolUrl(), getMethod(), topActivity, getParams(), getHeadParams());
         MbsResult2 mbsResult2 = mbsRequest2.http2Result();
         T t = null;
         try {

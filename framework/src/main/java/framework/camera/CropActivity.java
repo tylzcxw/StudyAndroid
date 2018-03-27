@@ -7,8 +7,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
-import framework.config.AppGlobal;
-import framework.utils.LogManager;
+import com.tylz.common.config.AppGlobal;
+import com.tylz.common.utils.LogManager;
 
 /**
  * Created by cxw on 2017/5/8.

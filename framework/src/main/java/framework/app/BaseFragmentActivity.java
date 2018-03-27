@@ -9,7 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.tylz.framework.R;
 
-import framework.utils.LogManager;
+import com.tylz.common.utils.LogManager;
 
 /*
   *  @创建者:   xuanwen

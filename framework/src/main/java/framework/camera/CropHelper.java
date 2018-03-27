@@ -12,7 +12,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import framework.app.BaseApplication;
-import framework.config.AppGlobal;
+import com.tylz.common.config.AppGlobal;
 /**
  * Created by cxw on 2017/5/8.
  *

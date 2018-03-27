@@ -4,10 +4,11 @@ import android.app.Activity;
 import android.os.Looper;
 import android.text.TextUtils;
 
-import com.example.commblib.config.C;
-import com.example.commblib.config.HttpAddress;
-import com.example.commblib.okhttpconnection.MbsResult2;
-import com.example.commblib.utils.NetUtils;
+import com.tylz.common.config.C;
+import com.tylz.common.config.HttpAddress;
+import com.tylz.common.okhttpconnection.MbsResult2;
+import com.tylz.common.utils.LogManager;
+import com.tylz.common.utils.NetUtils;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -25,7 +26,6 @@ import framework.async2.ResultListener2;
 import framework.exception.SecurityException;
 import framework.exception.TransactionException;
 import framework.ui.LoadingDialog;
-import framework.utils.LogManager;
 import framework.utils.LogUtils;
 
 /**
@@ -86,17 +86,13 @@ public abstract class TransactionRequest2<T extends TransactionResponse2> {
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        LogManager.logE(String.format
-                                ("=====================当前交易%s非UI线程，runOnUiThread" +
-                                         "=====================", getProtocolName()));
+                        LogManager.logE(String.format("=====================当前交易%s非UI线程，runOnUiThread" + "=====================", getProtocolName()));
                         LoadingDialog.getInstance().showLoading(activity);
                         doTask(listener, showLoading);
                     }
                 });
             } else {
-                LogManager.logE(String.format
-                        ("=====================当前交易%s在UI线程，直接执行=====================",
-                         getProtocolName()));
+                LogManager.logE(String.format("=====================当前交易%s在UI线程，直接执行=====================", getProtocolName()));
                 LoadingDialog.getInstance().showLoading(activity);
                 doTask(listener, showLoading);
             }
@@ -138,20 +134,17 @@ public abstract class TransactionRequest2<T extends TransactionResponse2> {
         if (result.getConnExp() != null) {
             LogUtils.error(TAG, "Fail to request " + getProtocolUrl(), result.getConnExp());
             BaseActivity topActivity = ActivityManager.getInstance().getTopActivity();
-            String errMsg = NetUtils.isMobile(topActivity) || NetUtils.isWIFI(topActivity) ? C
-                    .Error.NETWORK_ERROR : C.Error.NETWORK_NOT_CONN;
+            String errMsg = NetUtils.isMobile(topActivity) || NetUtils.isWIFI(topActivity) ? C.Error.NETWORK_ERROR : C.Error.NETWORK_NOT_CONN;
             throw new TransactionException(errMsg);
         }
         int responseCode = result.getResponseCode();
         // todo 返回的错误码 可自定义
         if (responseCode == 701 || responseCode == 702) { //自定义的
-            LogUtils.error(TAG, "Fail to request " + getProtocolUrl() + " Response code [" +
-                    responseCode + "]");
+            LogUtils.error(TAG, "Fail to request " + getProtocolUrl() + " Response code [" + responseCode + "]");
             throw new SecurityException("请重新登陆", null, String.valueOf(responseCode));
         }
         if (responseCode != 200) {
-            LogUtils.error(TAG, "Fail to request " + getProtocolUrl() + " Response code [" +
-                    responseCode + "]");
+            LogUtils.error(TAG, "Fail to request " + getProtocolUrl() + " Response code [" + responseCode + "]");
             throw new TransactionException(C.Error.SER_ERR);
         }
         String content = result.getStrContent();
@@ -215,7 +208,7 @@ public abstract class TransactionRequest2<T extends TransactionResponse2> {
                     }
                    paramsMap.put(name, value);
                 } catch (Exception e) {
-                    com.example.commblib.utils.LogManager.logD("Failed to get parameter [" + field.getName() + "]"+ e);
+                    LogManager.logD("Failed to get parameter [" + field.getName() + "]"+ e);
                     e.printStackTrace();
                 }
             }
@@ -273,7 +266,7 @@ public abstract class TransactionRequest2<T extends TransactionResponse2> {
             }
 
         }
-        com.example.commblib.utils.LogManager.logD(parameterMap.toString());
+        LogManager.logD(parameterMap.toString());
         return parameterMap;
     }
 

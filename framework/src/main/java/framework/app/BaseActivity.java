@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import framework.utils.ContextUtils;
-import framework.utils.LogManager;
+import com.tylz.common.utils.LogManager;
 import framework.utils.SystemBarTintManager;
 
 /*

@@ -2,9 +2,9 @@ package framework.transaction;
 
 import android.text.TextUtils;
 
-import com.example.commblib.config.HttpAddress;
-import com.example.commblib.net.httpconnection.MbsRequest;
-import com.example.commblib.net.httpconnection.MbsResult;
+import com.tylz.common.config.HttpAddress;
+import com.tylz.common.httpconnection.MbsRequest;
+import com.tylz.common.httpconnection.MbsResult;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;

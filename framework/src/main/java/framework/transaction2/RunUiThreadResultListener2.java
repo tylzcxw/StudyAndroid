@@ -5,15 +5,15 @@ import android.app.Dialog;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.example.commblib.config.C;
-import com.example.commblib.utils.NetUtils;
+import com.tylz.common.config.C;
+import com.tylz.common.utils.LogManager;
+import com.tylz.common.utils.NetUtils;
 
 import framework.app.ActivityManager;
 import framework.async2.ResultListener2;
 import framework.exception.TransactionException;
 import framework.transaction.RequestController;
 import framework.ui.CcbDialog;
-import framework.utils.LogManager;
 import framework.utils.UIUtils;
 
 /**
@@ -131,7 +131,7 @@ public abstract class RunUiThreadResultListener2<T> extends ResultListener2<T> {
 
     public void handleDefaultException() {
         if(TextUtils.isEmpty(mResponseCode)){
-            showErrorDialog(mActivity,C.Error.NETWORK_ERROR);
+            showErrorDialog(mActivity, C.Error.NETWORK_ERROR);
         }else{
             showErrorDialog(mActivity,C.Error.SER_ERR);
         }

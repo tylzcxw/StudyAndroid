@@ -5,8 +5,9 @@ import android.app.Dialog;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.example.commblib.config.C;
-import com.example.commblib.utils.NetUtils;
+import com.tylz.common.config.C;
+import com.tylz.common.utils.LogManager;
+import com.tylz.common.utils.NetUtils;
 
 import framework.app.ActivityManager;
 import framework.async.ResultListener;
@@ -14,7 +15,6 @@ import framework.exception.TransactionException;
 import framework.security.LoginUtils;
 import framework.security.login.LoginResultListener;
 import framework.ui.CcbDialog;
-import framework.utils.LogManager;
 import framework.utils.UIUtils;
 
 /**
@@ -126,7 +126,7 @@ public abstract class RunUiThreadResultListener<T> extends ResultListener<T> {
         handleTransException(e);
     }
     public void handleParseErrorException() {
-        showErrorDialog(mActivity,C.Error.PARSE_ERROR);
+        showErrorDialog(mActivity, C.Error.PARSE_ERROR);
     }
 
     public void handleDefaultException() {

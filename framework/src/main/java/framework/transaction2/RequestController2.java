@@ -6,7 +6,7 @@ import java.util.List;
 import framework.app.ActivityManager;
 import framework.app.BaseActivity;
 import framework.async2.AsyncTask2;
-import framework.utils.LogManager;
+import com.tylz.common.utils.LogManager;
 
 /**
  * Created by cxw on 2017/7/20.

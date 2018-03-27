@@ -1,8 +1,9 @@
 package framework.async;
 
-import com.example.commblib.config.C;
-import com.example.commblib.utils.LogManager;
-import com.example.commblib.utils.NetUtils;
+
+import com.tylz.common.config.C;
+import com.tylz.common.utils.LogManager;
+import com.tylz.common.utils.NetUtils;
 
 import framework.app.ActivityManager;
 import framework.app.BaseActivity;

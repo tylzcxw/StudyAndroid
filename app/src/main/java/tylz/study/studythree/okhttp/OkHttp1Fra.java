@@ -14,7 +14,7 @@ import java.util.Map;
 
 import framework.app.BaseFragment;
 import framework.async.ThreadManager;
-import framework.config.HttpUrl;
+import com.tylz.common.config.HttpUrl;
 import framework.transaction2.RunUiThreadResultListener2;
 import framework.transaction2.TransactionRequest2;
 import framework.ui.LoadingDialog;

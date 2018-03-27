@@ -2,7 +2,7 @@ package framework.transaction;
 
 import android.text.TextUtils;
 
-import com.example.commblib.net.httpconnection.MbsResult;
+import com.tylz.common.httpconnection.MbsResult;
 
 import framework.exception.SecurityException;
 import framework.exception.TransactionException;

@@ -13,14 +13,18 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
+subprojects {
+    //gradlew allDeps
+    task allDeps(type: DependencyReportTask) {}
+}
 allprojects {
     repositories {
         jcenter()
         mavenCentral()
         google()
-        flatDir {
-            dirs '../commblib/libs'
-        }
+       flatDir {
+           dirs '../common/libs'
+       }
     }
 }
 

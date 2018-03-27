@@ -1,9 +1,10 @@
 package framework.transaction;
 
-import com.example.commblib.config.C;
-import com.example.commblib.net.httpconnection.MbsResult;
-import com.example.commblib.utils.LogManager;
-import com.example.commblib.utils.NetUtils;
+
+import com.tylz.common.config.C;
+import com.tylz.common.httpconnection.MbsResult;
+import com.tylz.common.utils.LogManager;
+import com.tylz.common.utils.NetUtils;
 
 import java.util.List;
 import java.util.Map;

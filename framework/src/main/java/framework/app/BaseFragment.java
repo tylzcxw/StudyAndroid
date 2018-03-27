@@ -9,9 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.commblib.utils.LogManager;
-
 import butterknife.ButterKnife;
+import com.tylz.common.utils.LogManager;
+
 
 /*
  *  @创建者:   xuanwen

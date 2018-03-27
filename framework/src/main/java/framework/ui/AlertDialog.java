@@ -14,8 +14,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.EmptyUtils;
 import com.tylz.framework.R;
-import com.tylz.myutils.comm.EmptyUtils;
 
 /*
  *  @创建者:   tylz

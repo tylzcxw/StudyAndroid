@@ -16,7 +16,7 @@ import java.io.File;
 import java.io.IOException;
 
 import framework.app.BaseApplication;
-import framework.utils.LogManager;
+import com.tylz.common.utils.LogManager;
 
 
 public class MbsCameraApi {

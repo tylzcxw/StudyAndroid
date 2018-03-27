@@ -35,7 +35,7 @@
         android:theme="@style/AppBaseTheme">
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="KF5pqzUt0q2jR0rhUqGxx8rGpL0T5F7K" />       //key:开发者申请的Key
+            android:value="vPGfTB4LvezNG9pL7tNOpbZbSiBft4uv" />       //key:开发者申请的Key
 
         <activity android:name="tylz.study.mainindex.MainActivity">
             <intent-filter>
