@@ -22,6 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import framework.utils.LogUtils;
@@ -57,10 +58,10 @@ public class CustomCalendar extends View {
     private int mTextColorDay;
     private float mTextSizeDay;
     /**
-     * 任务次数文本的颜色、大小
+     * 日期下方描述文本的颜色、大小
      */
-    private int mTextColorPreFinish, mTextColorPreUnFinish, mTextColorPreNull;
-    private float mTextSizePre;
+    private int mTextColorDayDes;
+    private float mTextSizeDayDes;
     /**
      * 选中的文本的颜色
      */
@@ -151,10 +152,8 @@ public class CustomCalendar extends View {
         mTextSizeWeek = a.getDimension(R.styleable.CustomCalendar_textSizeWeek, 70);
         mTextColorDay = a.getColor(R.styleable.CustomCalendar_textColorDay, Color.GRAY);
         mTextSizeDay = a.getDimension(R.styleable.CustomCalendar_textSizeDay, 70);
-        mTextColorPreFinish = a.getColor(R.styleable.CustomCalendar_textColorPreFinish, Color.BLUE);
-        mTextColorPreUnFinish = a.getColor(R.styleable.CustomCalendar_textColorPreUnFinish, Color.BLUE);
-        mTextColorPreNull = a.getColor(R.styleable.CustomCalendar_textColorPreNull, Color.BLUE);
-        mTextSizePre = a.getDimension(R.styleable.CustomCalendar_textSizePre, 40);
+        mTextColorDayDes = a.getColor(R.styleable.CustomCalendar_textColorDayDes, Color.BLUE);
+        mTextSizeDayDes = a.getDimension(R.styleable.CustomCalendar_textSizeDayDes, 40);
         mSelectTextColor = a.getColor(R.styleable.CustomCalendar_selectTextColor, Color.YELLOW);
         mCurrentBg = a.getColor(R.styleable.CustomCalendar_currentBg, Color.GRAY);
         try {
@@ -239,7 +238,7 @@ public class CustomCalendar extends View {
 
         mPaint.setTextSize(mTextSizeDay);
         float dayTextLeading = getFontLeading(mPaint);
-        mPaint.setTextSize(mTextSizePre);
+        mPaint.setTextSize(mTextSizeDayDes);
         float preTextLeading = getFontLeading(mPaint);
         for (int i = 0; i < count; i++) {
             int left = (startIndex + i) * mColumnWidth;
@@ -274,14 +273,16 @@ public class CustomCalendar extends View {
             int x = left + (mColumnWidth - len) / 2;
             canvas.drawText(day + "", x, top + mLineSpac + dayTextLeading, mPaint);
             //绘制 日期描述
-            mPaint.setTextSize(mTextSizePre);
-            mPaint.setColor(mTextColorPreFinish);
+            mPaint.setTextSize(mTextSizeDayDes);
+            mPaint.setColor(mTextColorDayDes);
             DayDes dayDes = (DayDes) mMap.get(day);
             if (null != dayDes) {
-                //不判断月份
-                len = (int) getFontLength(mPaint, dayDes.des);
-                x = left + (mColumnWidth - len) / 2;
-                canvas.drawText(dayDes.des, x, topPre + mTextSpac + preTextLeading, mPaint);
+                if(dayDes.year == getCurrentYear() && dayDes.month == getCurrentMonth() + 1){
+                    len = (int) getFontLength(mPaint, dayDes.des);
+                    x = left + (mColumnWidth - len) / 2;
+                    canvas.drawText(dayDes.des, x, topPre + mTextSpac + preTextLeading, mPaint);
+                }
+
             }
 
         }
@@ -289,9 +290,24 @@ public class CustomCalendar extends View {
     }
 
     /**
+     * 得到界面当前正显示的月份
+     * @return 返回月份从0开始
+     */
+    private int getCurrentMonth(){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(mMonth);
+        return calendar.get(Calendar.MONTH);
+    }
+    private int getCurrentYear(){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(mMonth);
+        return calendar.get(Calendar.YEAR);
+    }
+    /**
      * 对于一月中每一天的描述
      */
     public static class DayDes {
+        int year;
         int month;
         int day;
         /**
@@ -299,19 +315,11 @@ public class CustomCalendar extends View {
          */
         String des = "休";
 
-        public DayDes(final int month, final int day, final String des) {
+        public DayDes(final int year, final int month, final int day, final String des) {
+            this.year = year;
             this.month = month;
             this.day = day;
             this.des = des;
-        }
-
-        @Override
-        public String toString() {
-            return "DayDes{" +
-                    "month=" + month +
-                    ", day=" + day +
-                    ", des='" + des + '\'' +
-                    '}';
         }
     }
 
@@ -389,7 +397,7 @@ public class CustomCalendar extends View {
         mPaint.setTextSize(mTextSizeDay);
         mDayHeight = getFontHeight(mPaint);
         //日期下方提示文字高度
-        mPaint.setTextSize(mTextSizePre);
+        mPaint.setTextSize(mTextSizeDayDes);
         mPreHeight = getFontHeight(mPaint);
         //每行高度 = 行间距 + 日期字体高度 + 字间距 + 日期下方提示文字高度
         mOneHeight = mLineSpac + mDayHeight + mTextSpac + mPreHeight;
@@ -406,11 +414,30 @@ public class CustomCalendar extends View {
         return simpleDateFormat.format(date);
     }
 
-    public void setMap(final Map<Integer, DayDes> map) {
+    public void setDayDesData(final Map<Integer, DayDes> map) {
         mMap = map;
         invalidate();
     }
 
+    /**
+     * 月份增减
+     */
+    public void monthChange(int change) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(mMonth);
+        calendar.add(Calendar.MONTH, change);
+        setMonth(getMonthStr(calendar.getTime()));
+        invalidate();
+    }
+    public void setDayDesData(List<DayDes> list){
+        if(null != list && list.size() > 0){
+            mMap.clear();
+            for(DayDes dayDes : list){
+                mMap.put(dayDes.month,dayDes);
+            }
+        }
+        invalidate();
+    }
     private void setMonth(String month) {
         //设置的月份(2018年03月)
         mMonth = str2Date(month);
@@ -498,17 +525,17 @@ public class CustomCalendar extends View {
         switch (action) {
             case MotionEvent.ACTION_DOWN:
                 mFocusPoint.set(event.getX(), event.getY());
-                touchFocusMove(mFocusPoint,false);
+                touchFocusMove(mFocusPoint, false);
                 break;
             case MotionEvent.ACTION_MOVE:
-                mFocusPoint.set(event.getX(),event.getY());
-                touchFocusMove(mFocusPoint,false);
+                mFocusPoint.set(event.getX(), event.getY());
+                touchFocusMove(mFocusPoint, false);
                 break;
             case MotionEvent.ACTION_OUTSIDE:
             case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_UP:
                 mFocusPoint.set(event.getX(), event.getY());
-                touchFocusMove(mFocusPoint,true);
+                touchFocusMove(mFocusPoint, true);
                 break;
 
         }
@@ -531,10 +558,12 @@ public class CustomCalendar extends View {
                     LogUtils.debug(TAG, "点击右键头");
                     mOnClickListener.onRightRowClick();
                 } else if (pointF.x > mRowLStart && pointF.x < mRowRStart) {
-                    mOnClickListener.onTitleClick(getMonthStr(mMonth), mMonth);
+                    //点击标题
+                    LogUtils.debug(TAG, "点击标题");
+                    mOnClickListener.onTitleClick(getMonthStr(mMonth),mMonth);
                 }
             }
-        }else if (pointF.y <= (mTitleHeight + mWeekHeight)) {
+        } else if (pointF.y <= (mTitleHeight + mWeekHeight)) {
             //事件在星期部分
             if (eventEnd && mOnClickListener != null) {
                 //根据x坐标找到具体的焦点日期
@@ -572,74 +601,78 @@ public class CustomCalendar extends View {
             top += mOneHeight;
             focusLine++;
         }
-        if(availability){
+        if (availability) {
             //根据x坐标找到具体的焦点日期
             int xIndex = (int) (pointF.x / mColumnWidth);
-            if((pointF.x /mColumnWidth - xIndex) > 0){
-                xIndex ++;
+            if ((pointF.x / mColumnWidth - xIndex) > 0) {
+                xIndex++;
             }
-            if(xIndex <= 0){
+            if (xIndex <= 0) {
                 xIndex = 1;//避免调到上一行最后一个日期
             }
-            if(xIndex > 7){
+            if (xIndex > 7) {
                 xIndex = 7;//避免调到下一行第一个日期
             }
-            if(focusLine == 1){
+            if (focusLine == 1) {
                 //第一行
-                if(xIndex <= mFirstIndex){
-                    LogUtils.debug(TAG,"点到开始空位了");
-                    setSelectedDay(mSelectDay,true);
-                }else{
-                    setSelectedDay(xIndex-mFirstIndex,eventEnd);
+                if (xIndex <= mFirstIndex) {
+                    LogUtils.debug(TAG, "点到开始空位了");
+                    setSelectedDay(mSelectDay, true);
+                } else {
+                    setSelectedDay(xIndex - mFirstIndex, eventEnd);
                 }
-            }else if(focusLine == mLineNum){
+            } else if (focusLine == mLineNum) {
                 //最后一行
-                if(xIndex > mLastLineNum){
-                    LogUtils.debug(TAG,"点到结束空位了");
-                    setSelectedDay(mSelectDay,true);
-                }else{
-                    setSelectedDay(mFirstLineNum + (focusLine - 2) * 7 + xIndex,eventEnd);
+                if (xIndex > mLastLineNum) {
+                    LogUtils.debug(TAG, "点到结束空位了");
+                    setSelectedDay(mSelectDay, true);
+                } else {
+                    setSelectedDay(mFirstLineNum + (focusLine - 2) * 7 + xIndex, eventEnd);
                 }
-            }else{
-                setSelectedDay(mFirstLineNum + (focusLine -2) * 7 + xIndex,eventEnd);
+            } else {
+                setSelectedDay(mFirstLineNum + (focusLine - 2) * 7 + xIndex, eventEnd);
             }
-        }else{
+        } else {
             //超出日期区域后，视为事件结束，响应最后一个选择日期的回调
-            setSelectedDay(mSelectDay,true);
+            setSelectedDay(mSelectDay, true);
         }
     }
-    /**设置选中的日期*/
-    private void setSelectedDay(int day,boolean eventEnd){
-        LogUtils.debug(TAG,"选中："+day+"  事件是否结束"+eventEnd);
+
+    /**
+     * 设置选中的日期
+     */
+    private void setSelectedDay(int day, boolean eventEnd) {
+        LogUtils.debug(TAG, "选中：" + day + "  事件是否结束" + eventEnd);
         mSelectDay = day;
         invalidate();
-        if(mOnClickListener != null && eventEnd && mResponseWhenEnd && mLastSelectDay != mSelectDay){
+        if (mOnClickListener != null && eventEnd && mResponseWhenEnd && mLastSelectDay != mSelectDay) {
             mLastSelectDay = mSelectDay;
-            mOnClickListener.onDayClick(mSelectDay,getMonthStr(mMonth) + mSelectDay + "日", mMap.get(mSelectDay));
+            mOnClickListener.onDayClick(mSelectDay, getMonthStr(mMonth) + mSelectDay + "日", mMap.get(mSelectDay));
         }
         mResponseWhenEnd = !eventEnd;
     }
+
     @Override
     public void invalidate() {
         requestLayout();
         super.invalidate();
     }
 
-    private onClickListener mOnClickListener;
+    private OnClickListener mOnClickListener;
 
-    public void setOnClickListener(final onClickListener onClickListener) {
+    public void setOnClickListener(OnClickListener onClickListener) {
         mOnClickListener = onClickListener;
     }
 
-    public interface onClickListener {
-        public abstract void onLeftRowClick();
+    public interface OnClickListener {
+        void onLeftRowClick();
 
-        public abstract void onRightRowClick();
+        void onRightRowClick();
 
-        public abstract void onTitleClick(String monthStr, Date month);
+        void onTitleClick(String monthStr, Date month);
 
-        public abstract void onWeekClick(int weekIndex, String weekStr);
+        void onWeekClick(int weekIndex, String weekStr);
 
-        public abstract void onDayClick(int day, String dayStr, DayDes dayDes);
+        void onDayClick(int day, String dayStr, DayDes dayDes);
     }
 }

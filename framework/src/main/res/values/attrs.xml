@@ -54,12 +54,10 @@
         <attr name="selectWeekTextColor" format="color"/>
         <attr name="textColorDay" format="color"/>
         <attr name="textSizeDay" format="dimension"/>
-        <attr name="textColorPreFinish" format="color"/>
-        <attr name="textColorPreUnFinish" format="color"/>
-        <attr name="textColorPreNull" format="color"/>
+        <attr name="textColorDayDes" format="color"/>
         <attr name="textSizeMonth" format="dimension"/>
         <attr name="textSizeWeek" format="dimension"/>
-        <attr name="textSizePre" format="dimension"/>
+        <attr name="textSizeDayDes" format="dimension"/>
 
         <attr name="monthRowL" format="reference"/>
         <attr name="monthRowR" format="reference"/>

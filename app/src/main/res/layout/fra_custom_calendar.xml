@@ -15,15 +15,13 @@
             app:textSizeMonth="20sp"
             app:textSizeWeek="17sp"
             app:textSizeDay="17sp"
-            app:textSizePre="10sp"
+            app:textSizeDayDes="10sp"
 
             app:textColorMonth="#4b4b4b"
             app:textColorWeek="#9e9e9d"
             app:selectWeekTextColor="#f67633"
             app:textColorDay="#686768"
-            app:textColorPreFinish="#fc7451"
-            app:textColorPreUnFinish="#60ba8d"
-            app:textColorPreNull="#cecdcd"
+            app:textColorDayDes="#fc7451"
             app:selectTextColor="#ff0000"
 
             app:monthSpac="10dip"

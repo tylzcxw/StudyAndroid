@@ -30,21 +30,22 @@ public class CustomCalendarFra extends BaseFragment {
         super.initData();
         CustomCalendar customCalendar = findViewById(R.id.custom_calendar);
 
-        customCalendar.setMap(getMapData());
-        customCalendar.setOnClickListener(new CustomCalendar.onClickListener() {
+        customCalendar.setDayDesData(getMapData());
+        customCalendar.setOnClickListener(new CustomCalendar.OnClickListener() {
+
             @Override
             public void onLeftRowClick() {
-                ToastUtils.showToast("左边点击了");
+                customCalendar.monthChange(-1);
             }
 
             @Override
             public void onRightRowClick() {
-                ToastUtils.showToast("右边点击了");
+                customCalendar.monthChange(1);
             }
 
             @Override
             public void onTitleClick(final String monthStr, final Date month) {
-                ToastUtils.showToast("标题点击了 monthStr = " + monthStr);
+
             }
 
             @Override
@@ -57,6 +58,7 @@ public class CustomCalendarFra extends BaseFragment {
                 ToastUtils.showToast("日期点击了 day = " + day + "  dayStr = " + dayStr + "   dayDes = " + dayDes);
             }
         });
+
     }
     private Map<Integer,CustomCalendar.DayDes> getMapData(){
         Map<Integer,CustomCalendar.DayDes> map = new HashMap<>();
@@ -65,9 +67,9 @@ public class CustomCalendarFra extends BaseFragment {
         for(int i = 1;i<=30;i++){
             int nextInt = random.nextInt(3);
             if(nextInt == 0){
-                map.put(i,new CustomCalendar.DayDes(4,i,"休"));
+                map.put(i,new CustomCalendar.DayDes(2018,4,i,"休"));
             }else {
-                map.put(i,new CustomCalendar.DayDes(4,i,"班"));
+                map.put(i,new CustomCalendar.DayDes(2018,4,i,"班"));
             }
         }
         return map;
