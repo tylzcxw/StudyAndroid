@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="tylz.study"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="tylz.study">
 
     <!--百度地图权限 start-->
     <!-- 这个权限用于进行网络定位-->
@@ -18,25 +18,41 @@
     <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
     <!-- 访问网络，网络定位需要上网-->
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     <!-- SD卡读取权限，用户写入离线定位数据-->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
     <!--百度地图权限 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
+
     <application
-        android:allowBackup="true"
         android:name="framework.app.BaseApplication"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppBaseTheme">
+        <!--友盟 start-->
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5abaf5688f4a9d10d700009a"/>
+        <activity
+            android:name="tylz.study.wxapi.WxEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <!--<meta-data android:value="Channel ID" android:name="UMENG_CHANNEL"/>-->
+        <!--友盟 end-->
+        <!--百度地图 start-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="vPGfTB4LvezNG9pL7tNOpbZbSiBft4uv" />       //key:开发者申请的Key
-
+            android:value="vPGfTB4LvezNG9pL7tNOpbZbSiBft4uv"/>
+        //key:开发者申请的Key
+        <!--百度地图 end-->
         <activity android:name="tylz.study.mainindex.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -46,7 +62,11 @@
         </activity>
         <activity android:name="tylz.study.mainindex.ExampleActivity"/>
         <activity android:name="tylz.study.studythree.loadsir.LoadSirFra"/>
-        <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"/>
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"/>
     </application>
 
 </manifest>

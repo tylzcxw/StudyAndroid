@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+        <framework.ui.widget.CustomCalendar
+            android:id="@+id/custom_calendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:monthRowL="@mipmap/custom_calendar_row_left"
+            app:monthRowR="@mipmap/custom_calendar_row_right"
+            app:monthRowSpac="20dp"
+
+            app:textSizeMonth="20sp"
+            app:textSizeWeek="17sp"
+            app:textSizeDay="17sp"
+            app:textSizePre="10sp"
+
+            app:textColorMonth="#4b4b4b"
+            app:textColorWeek="#9e9e9d"
+            app:selectWeekTextColor="#f67633"
+            app:textColorDay="#686768"
+            app:textColorPreFinish="#fc7451"
+            app:textColorPreUnFinish="#60ba8d"
+            app:textColorPreNull="#cecdcd"
+            app:selectTextColor="#ff0000"
+
+            app:monthSpac="10dip"
+            app:lineSpac="12dip"
+            app:textSpac="8dip"
+
+            app:currentBg="#6E6E6E"
+            app:currentBgStrokeWidth="1.5dip"
+            app:currentBgDashPath="@array/CustomCalendar_CurrentDay_Bg_DashPath"
+            app:selectBg="#fe7f5c"
+            app:selectRadius="15dip" />
+</LinearLayout>

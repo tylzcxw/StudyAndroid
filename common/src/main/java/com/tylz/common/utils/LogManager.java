@@ -6,14 +6,9 @@ package com.tylz.common.utils;
 public class LogManager {
 
 
-    public static final boolean IS_INSURANCE_TEST = false;// 是否为代理保险测试版
     public static final boolean IS_RELEASE_VERSION = false;// 是否生产版本开关,true-生产版，false-内测版
 
     public static final boolean IS_DEBUG = true;// 日志开关,true为打开
-
-    public static final boolean IsClientTypeTest = true;// 测试版开关，true为测试版客户端
-
-
 
     public static final boolean CLOSE_VERIFY_CERTIFICATE = true;// 证书认证开关,true为不验证证书
 

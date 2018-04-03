@@ -281,7 +281,7 @@ public abstract class LogUtils {
             return;
         try {
             if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-                String foldername = Environment.getExternalStorageDirectory().getPath() + "/ccb/ccblog";
+                String foldername = Environment.getExternalStorageDirectory().getPath() + "/tylz/tylzlog";
                 File folder = new File(foldername);
 
                 if (!folder.exists()) {

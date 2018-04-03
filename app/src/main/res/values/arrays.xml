@@ -48,6 +48,7 @@
         <item>ExpandTextView-视图加载处理</item>
         <item>SearchView-搜索框</item>
         <item>ListPopSelecttor-搜索</item>
+        <item>CustomCalendar-自定义日历</item>
 
     </string-array>
     <string-array name="three_study_data">
@@ -59,6 +60,7 @@
         <item>OrmLite-2-数据库升级</item>
         <item>Retrofit2-RxJava-OkHttp</item>
         <item>TakePhoto-拍照截图压缩等</item>
+        <item>Umeng-友盟</item>
 
     </string-array>
 </resources>

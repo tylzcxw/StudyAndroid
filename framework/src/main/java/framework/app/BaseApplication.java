@@ -15,6 +15,7 @@ import framework.loadsir.callback.ErrorCallback;
 import framework.loadsir.callback.LoadingCallback;
 import framework.loadsir.callback.TimeoutCallback;
 import framework.loadsir.core.LoadSir;
+import framework.umeng.UmengController;
 import framework.utils.ContextUtils;
 
 /*
@@ -41,7 +42,12 @@ public class BaseApplication extends MultiDexApplication {
         SDKInitializer.initialize(getApplicationContext());
         initLoadSir();
         Stetho.initializeWithDefaults(this);
+        /**
+         * 友盟分享初始化
+         */
+        UmengController.getInstance().init(this);
     }
+
 
     public static Handler getMainHandler() {
         return mMainHandler;

@@ -17,6 +17,8 @@ subprojects {
     //gradlew allDeps
     task allDeps(type: DependencyReportTask) {}
 }
+//获取签名 1. cd .android 2. keytool -list -v -keystore 签名文件
+//
 allprojects {
     repositories {
         jcenter()

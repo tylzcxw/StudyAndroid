@@ -3,7 +3,8 @@
     <attr name="custom_titleText" format="string"/>
     <attr name="custom_titleTextColor" format="color"/>
     <attr name="custom_titleTextSize" format="dimension"/>
-    
+    <!--选中文字颜色-->
+    <attr name="selectTextColor" format="color"/>
     <declare-styleable name="CustomTitleView">
         <attr name="custom_titleText"/>
         <attr name="custom_titleTextColor"/>
@@ -26,13 +27,55 @@
         <attr name="customTextSize" format="dimension"/>
         <!--文字颜色-->
         <attr name="customTextColor" format="color"/>
-        <!--选中文字颜色-->
-        <attr name="selectTextColor" format="color"/>
         <!--选中背景颜色-->
         <attr name="selectBackgroudColor" format="color"/>
         <!--显示文字数据-->
         <attr name="letter" format="reference"/>
         <!--是否显示选中背景-->
         <attr name="showSelectBackGroudColor" format="boolean"/>
+        <!--选中文字颜色-->
+        <attr name="selectTextColor"/>
     </declare-styleable>
+    <!--自定义日历控件 start-->
+    <declare-styleable name="CustomCalendar">
+        <!--月份背景色-->
+        <attr name="bgMonth" format="color"/>
+        <!--星期背景色-->
+        <attr name="bgWeek" format="color"/>
+        <!--日期背景色-->
+        <attr name="bgDay" format="color"/>
+        <!--任务背景色-->
+        <attr name="bgPre" format="color"/>
+        <!--选中文字颜色-->
+        <attr name="selectTextColor"/>
+
+        <attr name="textColorMonth" format="color"/>
+        <attr name="textColorWeek" format="color"/>
+        <attr name="selectWeekTextColor" format="color"/>
+        <attr name="textColorDay" format="color"/>
+        <attr name="textSizeDay" format="dimension"/>
+        <attr name="textColorPreFinish" format="color"/>
+        <attr name="textColorPreUnFinish" format="color"/>
+        <attr name="textColorPreNull" format="color"/>
+        <attr name="textSizeMonth" format="dimension"/>
+        <attr name="textSizeWeek" format="dimension"/>
+        <attr name="textSizePre" format="dimension"/>
+
+        <attr name="monthRowL" format="reference"/>
+        <attr name="monthRowR" format="reference"/>
+        <attr name="monthRowSpac" format="dimension"/>
+
+
+        <attr name="selectBg" format="color"/>
+        <attr name="selectRadius" format="dimension"/>
+        <attr name="currentBg" format="color"/>
+        <attr name="currentBgStrokeWidth" format="dimension"/>
+        <attr name="currentBgDashPath" format="reference"/>
+
+        <attr name="monthSpac" format="dimension" />
+        <attr name="lineSpac" format="dimension" />
+        <attr name="textSpac" format="dimension" />
+    </declare-styleable>
+
+    <!--自定义日历控件 end-->
 </resources>
