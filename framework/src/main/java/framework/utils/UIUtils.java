@@ -94,10 +94,7 @@ public class UIUtils {
         int version = 0;
         try {
             PackageManager packageManager = BaseApplication.getInstance().getPackageManager();
-            PackageInfo    packageInfo    = packageManager.getPackageInfo(BaseApplication
-                                                                                  .getInstance()
-                                                                                         .getPackageName(),
-                                                                          0);
+            PackageInfo    packageInfo    = packageManager.getPackageInfo(BaseApplication.getInstance().getPackageName(), 0);
             version = packageInfo.applicationInfo.targetSdkVersion;
         } catch (PackageManager.NameNotFoundException e) {
             LogManager.logE("==========get package info error===========");
@@ -129,8 +126,7 @@ public class UIUtils {
         if (TextUtils.isEmpty(permission))
             return true;
         if(Manifest.permission.REQUEST_INSTALL_PACKAGES.equals(permission)){
-            return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-                    ? BaseApplication.getInstance().getPackageManager().canRequestPackageInstalls() : true;
+            return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) ? BaseApplication.getInstance().getPackageManager().canRequestPackageInstalls() : true;
         }
         if (getTargetSdkVersion() < Build.VERSION_CODES.M) {
             return PERMISSION_GRANTED == PermissionChecker.checkSelfPermission(BaseApplication.getInstance(), permission);

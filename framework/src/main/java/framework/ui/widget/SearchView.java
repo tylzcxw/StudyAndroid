@@ -109,19 +109,17 @@ public class SearchView extends LinearLayout {
         mEtSearch.setOnFocusChangeListener(new OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)
-                        mRlMidLayout
-                        .getLayoutParams();
-                if (hasFocus) {
-                    layoutParams.width = RelativeLayout.LayoutParams.MATCH_PARENT;
-                } else {
-                    if (mEtSearch.getText().toString().length() > 0) {
-                        layoutParams.width = RelativeLayout.LayoutParams.MATCH_PARENT;
-                    } else {
-                        layoutParams.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
-                    }
-                }
-                mLlSearchLayout.setLayoutParams(layoutParams);
+//                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) mRlMidLayout.getLayoutParams();
+//                if (hasFocus) {
+//                    layoutParams.width = RelativeLayout.LayoutParams.MATCH_PARENT;
+//                } else {
+//                    if (mEtSearch.getText().toString().length() > 0) {
+//                        layoutParams.width = RelativeLayout.LayoutParams.MATCH_PARENT;
+//                    } else {
+//                        layoutParams.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
+//                    }
+//                }
+//                mRlMidLayout.setLayoutParams(layoutParams);
             }
         });
     }

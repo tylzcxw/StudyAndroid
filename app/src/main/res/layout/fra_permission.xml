@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
    <Button
        android:id="@+id/btn_permission"
-       android:text="判断相机权限"
+       android:text="打电话前权限判断"
        android:layout_width="match_parent"
        android:layout_height="wrap_content" />
    <TextView

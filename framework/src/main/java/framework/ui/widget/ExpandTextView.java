@@ -7,10 +7,12 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.StringRes;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -65,7 +67,6 @@ public class ExpandTextView extends LinearLayout {
             }
         });
     }
-
     private void initView(Context context) {
         View view = View.inflate(context, R.layout.view_expand_textview, this);
         mIvArrow = (ImageView) view.findViewById(R.id.iv_arrow);
@@ -74,10 +75,7 @@ public class ExpandTextView extends LinearLayout {
 
     private void initData(Context context, AttributeSet attrs, int defStyleAttr) {
 
-        TypedArray typedArray = context.obtainStyledAttributes(attrs,
-                                                               R.styleable.ExpandTextView,
-                                                               defStyleAttr,
-                                                               0);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ExpandTextView, defStyleAttr, 0);
         mTextSize = typedArray.getDimension(R.styleable.ExpandTextView_textSize, mTextSize);
         mPicUp = typedArray.getDrawable(R.styleable.ExpandTextView_pic_up);
         mPicDown = typedArray.getDrawable(R.styleable.ExpandTextView_pic_down);
@@ -113,14 +111,10 @@ public class ExpandTextView extends LinearLayout {
         tv.setTextSize(mTextSize);
         tv.setLines(mLine);
         int measuredWidth  = mTvContent.getMeasuredWidth();
-        int measuredHeight = mTvContent.getMeasuredHeight();
-        LogUtils.debug("getCloseHeight() mTvContent height2 = " + mTvContent.getMeasuredHeight());
         //测量
-        int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(measuredWidth,
-                                                                View.MeasureSpec.EXACTLY);
-        int heightMeasureSpec = View.MeasureSpec.UNSPECIFIED;
+        int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(measuredWidth, View.MeasureSpec.EXACTLY);
+        int heightMeasureSpec = MeasureSpec.UNSPECIFIED;
         tv.measure(widthMeasureSpec, heightMeasureSpec);
-        LogUtils.debug("getCloseHeight() tv height2 = " + tv.getMeasuredHeight());
         return tv.getMeasuredHeight();
     }
 
@@ -132,19 +126,40 @@ public class ExpandTextView extends LinearLayout {
         TextView tv = new TextView(getContext());
         tv.setText(mText);
         tv.setTextSize(mTextSize);
+
         int measuredHeight = mTvContent.getMeasuredHeight();
         int measuredWidth  = mTvContent.getMeasuredWidth();
         LogUtils.debug("getOpenHeight() mTvContent height = " + measuredHeight);
         //测量
-        int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(measuredWidth,
-                                                                View.MeasureSpec.EXACTLY);
-        int heightMeasureSpec = View.MeasureSpec.UNSPECIFIED;
+        int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(measuredWidth, View.MeasureSpec.EXACTLY);
+        int heightMeasureSpec = MeasureSpec.UNSPECIFIED;
         tv.measure(widthMeasureSpec, heightMeasureSpec);
         LogUtils.debug("getOpenHeight() tv height2 = " + tv.getMeasuredHeight());
         return tv.getMeasuredHeight();
     }
-
+    public void setText(String text){
+        mTvContent.setText(text);
+        toggle(false);
+        invalidate();
+    }
+    public void setText(@StringRes int strRes){
+        mTvContent.setText(strRes);
+        toggle(false);
+        invalidate();
+    }
     public void toggle(boolean animated) {
+        /*
+            当自身完全展开高度小于 设置行数的高度，那么隐藏箭头图标 不进行缩放展开
+         */
+        if(getClosedHeight() >= getOpenHeight()){
+            mIvArrow.setVisibility(GONE);
+            setContentHeight(getOpenHeight());
+            return;
+        }else if(getClosedHeight() != 0 && getOpenHeight() == 0){
+            mIvArrow.setVisibility(GONE);
+        }else{
+            mIvArrow.setVisibility(VISIBLE);
+        }
         if (isOpened) {
             //需要关闭
             int start = getOpenHeight();
@@ -183,9 +198,7 @@ public class ExpandTextView extends LinearLayout {
             if (isOpened) {
                 ObjectAnimator.ofFloat(mIvArrow, "rotation", 0, 180).setDuration(mDuration).start();
             } else {
-                ObjectAnimator.ofFloat(mIvArrow, "rotation", 180, 360)
-                              .setDuration(mDuration)
-                              .start();
+                ObjectAnimator.ofFloat(mIvArrow, "rotation", 180, 360).setDuration(mDuration).start();
             }
         } else {
             if (mPicDown != null && mPicUp != null) {

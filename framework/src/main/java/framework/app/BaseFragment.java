@@ -2,6 +2,7 @@ package framework.app;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -196,7 +197,9 @@ public class BaseFragment extends Fragment {
     protected void startAcitvity(Class clazz){
         ActivityManager.getInstance().startActivity(getActivity(), clazz);
     }
-
+    protected void startSystemAcitvity(Intent intent){
+       getActivity().startActivity(intent);
+    }
     @Override
     public void onResume() {
         super.onResume();

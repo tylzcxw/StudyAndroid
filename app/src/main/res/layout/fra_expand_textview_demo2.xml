@@ -10,16 +10,29 @@
         app:textSize="20px"
         app:text="@string/app_des"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></framework.ui.widget.ExpandTextView>
+        android:layout_height="wrap_content"/>
     <framework.ui.widget.ExpandTextView
         android:id="@+id/view_etv2"
         app:line="2"
         app:textSize="20px"
-        app:text="111"
+        app:text="一个人在乎得太多，肯定过得很累。不要为别人的想法而改变自己的生活方式，"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></framework.ui.widget.ExpandTextView>
+        android:layout_height="wrap_content"/>
+    <framework.ui.widget.ExpandTextView
+        android:id="@+id/view_etv3"
+        app:line="2"
+        app:textSize="20px"
+        app:text="@string/app_des"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <framework.ui.widget.ExpandTextView
+        android:id="@+id/view_etv4"
+        app:line="2"
+        app:textSize="20px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <TextView
         android:layout_width="match_parent"
-        android:text="@string/app_des"
-        android:layout_height="wrap_content"/>
+        android:text="缺陷太多"
+        android:layout_height="wrap_content" />
 </LinearLayout>

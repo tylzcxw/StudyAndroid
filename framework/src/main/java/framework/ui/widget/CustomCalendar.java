@@ -167,6 +167,7 @@ public class CustomCalendar extends View {
             e.printStackTrace();
             mCurrentBgDashPath = new float[]{2, 3, 2, 3};
         }
+        mSelectBg = a.getColor(R.styleable.CustomCalendar_selectBg,Color.YELLOW);
         mSelectRadius = a.getDimension(R.styleable.CustomCalendar_selectRadius, 20);
         mCurrentBgStrokeWidth = a.getDimension(R.styleable.CustomCalendar_currentBgStrokeWidth, 5);
         mLineSpac = a.getDimension(R.styleable.CustomCalendar_lineSpac, 20);

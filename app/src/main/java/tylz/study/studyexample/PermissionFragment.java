@@ -2,9 +2,15 @@ package tylz.study.studyexample;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,9 +31,10 @@ import framework.utils.UIUtils;
  *
  * @创建者: xuanwen
  * @创建日期: 2017/5/5
- * @描述: TODO
+ * @描述: https://blog.csdn.net/u010263943/article/details/71467877
  */
 public class PermissionFragment extends BaseFragment implements View.OnClickListener {
+    public static final int REQUESTCODE_PERMISSION_CALLPHONE = 1000;
     private TextView mTvVersion;
     public PermissionFragment(){
         setPageTag("fragment_permission");
@@ -53,7 +60,7 @@ public class PermissionFragment extends BaseFragment implements View.OnClickList
         data.append("Build.VERSION.SDK_INT = ");
         data.append(Build.VERSION.SDK_INT);
         data.append("\n");
-        data.append("has camera permission = " + UIUtils.hasAppPermission(Manifest.permission.CAMERA));
+        data.append("has camera permission = " + UIUtils.hasAppPermission(Manifest.permission.CALL_PHONE));
         mTvVersion.setText(data.toString());
     }
 
@@ -61,39 +68,35 @@ public class PermissionFragment extends BaseFragment implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_permission:
-                if(!UIUtils.hasAppPermission(Manifest.permission.CAMERA)){
-                    requestPermission();
-                }
+                testCall();
                 break;
         }
     }
-
-    private void requestPermission() {
-        String[] permissions = new String[]{Manifest.permission.CAMERA};
-        PermissionHelper.getInstance().requestPermission(getActivity(), new OnPermissionListener() {
-            @Override
-            public void onPermissionRequestSuccess(String... permission) {
-                ToastUtils.showToast("成功" + permission);
-            }
-
-            @Override
-            public void onPermissionRequestFailed(String... permission) {
-                failPermission(permission);
-            }
-        },permissions);
+    private void testCall(){
+        if(ContextCompat.checkSelfPermission(getActivity(),Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.CALL_PHONE},REQUESTCODE_PERMISSION_CALLPHONE);
+        }else{
+            callPhone();
+        }
+    }
+    private void callPhone() {
+        Intent intent = new Intent(Intent.ACTION_CALL);
+        Uri data = Uri.parse("tel:10086");
+        intent.setData(data);
+        startSystemAcitvity(intent);
     }
 
-    private void failPermission(String[] permission) {
-        PermissionDialogUtil.getInstance().showPermissionDeniedDialog(getActivity(), new OnPermisssionDialogClickListener() {
-            @Override
-            public void onSettingClick(Context context) {
-                super.onSettingClick(context);
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(requestCode == REQUESTCODE_PERMISSION_CALLPHONE){
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                callPhone();
+            }else{
+                //权限拒绝
+                ToastUtils.showToast("电话权限被拒绝");
             }
-
-            @Override
-            public void onCancelClick() {
-                ToastUtils.showToast("反悔");
-            }
-        },permission);
+            return;
+        }
+        super.onRequestPermissionsResult(requestCode,permissions,grantResults);
     }
 }

@@ -7,7 +7,7 @@ def releaseTime() {
     return new Date().format('yyyyMMddHHmm')
 }
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdkVersion 26
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -65,5 +65,4 @@ dependencies {
     compile project(':framework')
     compile project(':protocol')
     compile project(':common')
-
 }
