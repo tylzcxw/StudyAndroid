@@ -17,6 +17,7 @@ import tylz.study.studyexample.CameraFragment;
 import tylz.study.studyexample.ExpandTextViewDemoFra;
 import tylz.study.studyexample.HtmlDemoBackFragment;
 import tylz.study.studyexample.HtmlDemoFragment;
+import tylz.study.studyexample.KeyBoardFragment;
 import tylz.study.studyexample.PermissionFragment;
 import tylz.study.studyexample.mvp.fragment.UserFragment;
 
@@ -64,6 +65,7 @@ public class ExampleActivity extends BaseActivity implements View.OnClickListene
             case 2:
                 break;
             case 3:
+                startActivity(KeyBoardFragment.class);
                 break;
             case 4:
                 ActivityManager.getInstance().startActivity(this, CameraFragment.class);

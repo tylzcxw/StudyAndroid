@@ -57,8 +57,10 @@ public class BaseFragmentActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        mFragment.onActivityResult(requestCode, resultCode, data);
-        LogManager.logD("requestCode = " + requestCode);
+        if(mFragment != null){
+            mFragment.onActivityResult(requestCode, resultCode, data);
+            LogManager.logD(mFragment.getClass().getSimpleName() + "onActivityResult requestCode = " + requestCode);
+        }
     }
 
     @Override
